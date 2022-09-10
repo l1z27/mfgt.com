@@ -1,5 +1,6 @@
 
 import Header from '../Header'
+import Footer from '../Footer'
 import { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import './contact.sass'
@@ -12,10 +13,10 @@ const Contact = () => {
         e.preventDefault()
 
         emailjs.sendForm(
-            'service_0ezcggf',
-            'template_a148fum',
+            'service_jrlzbjj',
+            'template_zstdwlt',
             form.current,
-            'DElYtzPaZ92SyzZww'
+            'xRLYjhrC2lDWMZVb9'
         ).then(
             () => {
                 //success handler - need to hide form and show success message
@@ -32,27 +33,41 @@ const Contact = () => {
 
     return (
 
-        <div className='container contact'>
+        <main className='contact'>
             <Header />
-            <h1> CONTACT</h1>
+            <section className='container'>
+                <main>
+                <h2 className='title'>Contact Us</h2>
+                <p>Thank you for your interest in Manufacturing Turnarounds. Please fill out the form below if you have any questions or need more information.</p>
+                <form className='form' ref={form} onSubmit={sendEmail}>
+                    <input type='hidden' name='subject' val='Manufacturing Turnarounds Contact Form' maxlength="80" />
+                    <label className='form__label form__label-name'>
+                        Name
+                        <input placeholder='Name' type='text' name='name' className='form__input' maxlength="80" required />
+                    </label>
+                    <label className='form__label form__label-company'>
+                        Company
+                        <input placeholder='Company' type='text' name='company'  maxlength="80" className='form__input' required />
+                    </label>
+                    <label className='form__label form__label-phone'>
+                        Phone
+                        <input placeholder='Phone' type='number' name='phone'  maxlength="15" className='form__input' required />
+                    </label>
+                    <label className='form__label form__label-email'>
+                        Email
+                        <input placeholder='email@coder.xyz' type='email' name='email' maxlength="80" className='form__input' required />
+                    </label>
+                    <label className='form__label form__label-message'>
+                        Message
+                        <textarea placeholder='Message' name='message'  maxlength="2000" rows="6" className='form__input' required></textarea> 
+                    </label>
+                    <input type='submit' className='form__submit' value='send' />
+                </form>
+                </main>
+            </section>
+            <Footer />
+        </main>
 
-            <form className='form' ref={form} onSubmit={sendEmail}>
-                <input type='hidden' name='subject' val='coder.xyz | Portfolio Contact Form' />
-                <label className='form__label form__label-name'>
-                    Name
-                    <input placeholder='Name' type='text' name='name' required />
-                </label>
-                <label className='form__label form__label-email'>
-                    Email
-                    <input placeholder='email@coder.xyz' type='email' name='email' required />
-                </label>
-                <label className='form__label form__label-message'>
-                    Message
-                    <textarea placeholder='Message' name='message' required></textarea> 
-                </label>
-                <input type='submit' className='form__submit' value='send' />
-            </form>
-        </div>
 
     )
 }

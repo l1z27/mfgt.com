@@ -1,0 +1,21 @@
+{
+    "consultants": [
+        {
+            "img": "https://images.pexels.com/photos/32976/pexels-photo.jpg",
+            "name": "John Armstrong",
+            "company": "ACME Company Name",
+            "title": "Senior Vice President",
+            "description": "John Armstrong has more than 35 years of experience in operations, finance, and general management. He has served in a variety of roles including executive management and advisor to corporate boards of directors, management, lenders, and investors. His specialties include developing and implementing new business models, working with finance and accounting teams to improve operations and reporting routines, liaising with creditors, lenders and private equity groups to source new financing.",
+            "url": "http://google.com"
+        },
+        {
+            "img": "https://images.pexels.com/photos/4427610/pexels-photo-4427610.jpeg",
+            "name": "Jennifer Sinclair",
+            "company": "ACME Company Name",
+            "title": "Media Marketing Manager",
+            "description": "Jennifer Sinclair has more than 5 years of experience in operations, finance, and general management. He has served in a variety of roles including executive management and advisor to corporate boards of directors, management, lenders, and investors. His specialties include developing and implementing new business models, working with finance and accounting teams to improve operations and reporting routines, liaising with creditors, lenders and private equity groups to source new financing.",
+            "url": "http://google.com"
+        }
+      
+    ]
+}

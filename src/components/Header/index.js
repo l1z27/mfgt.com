@@ -1,30 +1,66 @@
 import { NavLink } from 'react-router-dom'
-// import Me from '../../assets/images/me.jpg'
+import { useState } from "react"
 import './header.sass'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const Header = () => {
+    const [isActive, setActive] = useState("false");
+    const handleToggle = () => {
+        setActive(!isActive);
+      };
     return(
-        <header>
-            {/* <div className='hex'>
-                <img src={Me} alt="profile pic of me in the shape of a hexagon" />
-            </div> */}
-            <nav className='nav-bar'>
-                <NavLink exact='true' activeclassname='nav__link--active' className='nav__link' to='/'>Elizabeth Velasquez</NavLink>
-                <NavLink exact='true' activeclassname='nav__link--active' className='nav__link' to='/portfolio'>portfolio</NavLink>
-                <NavLink exact='true' activeclassname='nav__link--active' className='nav__link' to='/contact'>contact</NavLink>
+        <header className='header'>
+            <NavLink exact='true' activeclassname='nav__link--active' className='logo' to='/'>Manufacturing Turnarounds</NavLink>
+            <nav className={isActive ? "nav" : "nav nav--active"}>
+                <div className='nav__container'>
+                    <button type='button' className={isActive ? "nav__mobile nav__mobile-toggle" : "nav__mobile nav__mobile-toggle nav__mobile--active"} onClick={handleToggle}>
+                        <span className='sr-only'>Toggle navigation</span>
+                        <span className='nav__mobile-icon'></span>
+                        <span className='nav__mobile-icon'></span>
+                        <span className='nav__mobile-icon'></span>
+                    </button>
+            
+                    <ul className={isActive ? "nav__list" : "nav__list nav__list--active"}>
+                        <li className='nav__list-item nav__list-item--dropdown'>
+                            <NavLink exact='true' activeclassname='nav__link--active' className='nav__link' to='/about'>about</NavLink>
+                            <ul className='nav__dropdown'>
+                                <li className='nav__dropdown-item'>
+                                    <NavLink exact='true' activeclassname='nav__link--active' className='nav__link-sub' to='/about/story'>Our Story</NavLink>
+                                </li>
+                                <li className='nav__dropdown-item'>
+                                    <NavLink exact='true' activeclassname='nav__link--active' className='nav__link-sub' to='/about/mission'>Mission &amp; Values</NavLink>
+                                </li>
+                                <li className='nav__dropdown-item'>
+                                    <NavLink exact='true' activeclassname='nav__link--active' className='nav__link-sub' to='/about/case-studies'>Case Studies</NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className='nav__list-item nav__list-item--dropdown'>
+                        <NavLink exact='true' activeclassname='nav__link--active' className='nav__link' to='/services'>Services</NavLink>
+                            <ul className='nav__dropdown'>
+                                <li className='nav__dropdown-item'>
+                                    <NavLink exact='true' activeclassname='nav__link--active' className='nav__link-sub' to='/services/assessments'>Assessments</NavLink>
+                                </li>
+                                <li className='nav__dropdown-item'>
+                                    <NavLink exact='true' activeclassname='nav__link--active' className='nav__link-sub' to='/services/performance'>Performance Improvements</NavLink>
+                                </li>
+                                <li className='nav__dropdown-item'>
+                                    <NavLink exact='true' activeclassname='nav__link--active' className='nav__link-sub' to='/services/interim'>Interim Management</NavLink>
+                                </li>
+                                <li className='nav__dropdown-item'>
+                                    <NavLink exact='true' activeclassname='nav__link--active' className='nav__link-sub' to='/services/restructuring'>Restructering &amp; Turnaround</NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className='nav__list-item'>
+                            <NavLink exact='true' activeclassname='nav__link--active' className='nav__link' to='/consultants'>consultants</NavLink>
+                        </li>
+                        <li className='nav__list-item'>
+                            <NavLink exact='true' activeclassname='nav__link--active' className='nav__link' to='/contact'>contact</NavLink>
+                        </li>
+                    </ul>
+                </div>		
             </nav>
-            <a target='_blank'
-                rel='noreferrer'
-                href='https://www.linkedin.com/in/velasquezliz/'>
-                    <FontAwesomeIcon icon={faLinkedin} color='#4d4d4d' />
-            </a>
-            <a target='_blank'
-                rel='noreferrer'
-                href='https://github.com/l1z27'>
-                    <FontAwesomeIcon icon={faGithub} color='#4d4d4d' />
-            </a>
+          
 
         </header>
     )

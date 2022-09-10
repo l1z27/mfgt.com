@@ -1,0 +1,228 @@
+@import '../../App.sass'
+
+@keyframes homeSlideShow
+    0%
+        +bg-tint(rgba(3,24,53,0.8), "../../assets/images/home/slideshow5.jpg")
+    16%
+        +bg-tint(rgba(3,24,53,0.8), "../../assets/images/home/slideshow1.jpg")
+    32%
+        +bg-tint(rgba(3,24,53,0.8), "../../assets/images/home/slideshow2.jpg")
+    48%
+        +bg-tint(rgba(3,24,53,0.8), "../../assets/images/home/slideshow3.jpg")
+    64%
+        +bg-tint(rgba(3,24,53,0.8), "../../assets/images/home/slideshow4.jpg")
+    80%
+        +bg-tint(rgba(3,24,53,0.8), "../../assets/images/home/slideshow5.jpg")
+    96%
+        +bg-tint(rgba(3,24,53,0.8), "../../assets/images/home/slideshow5.jpg")
+.home
+    .slideshow
+        +container($container)
+        +bg-tint(rgba(3,24,53,0.8), "../../assets/images/home/slideshow0.jpg")
+        padding: 0
+        animation-name: homeSlideShow
+        background-size: 1920px 1280px
+        background-repeat: no-repeat
+        background-position: center top
+        animation-timing-function: ease-in-out
+        animation-iteration-count: infinite
+        animation-duration: 110s
+        animation-direction: alternate
+        &--follow
+            margin-top: 85px
+
+    .fold
+        padding: ($blh * 5) ($blh * 3)
+        max-width: 1100px
+        min-height: 800px
+        @media #{$media-max-sm}
+            min-height: 600px
+            padding: ($blh * 3) $blh
+        &__title
+            color: darken(#fff, 10%)
+            font-weight: 100
+            font-size: $fs * 2.9
+            line-height: normal
+            @media #{$media-max-sm}
+                font-size: $fs * 1.8
+        &__txt
+            padding: calc($blh/2) $blh
+            color: #fff
+            font-weight: 400
+            font-size: $fs * 1.3
+            width: 80%
+            @media #{$media-max-sm}
+                width: 100%
+            @media #{$media-max-xs}
+                font-size: $fs
+        .btn
+            margin: 0 0 0 $blh
+
+
+
+    .services
+        background: lighten($clr-w, 5%)
+        .container
+            +container($container)
+        &__container
+            display: flex
+            align-items: stretch 
+            justify-content: center
+            @media #{$media-max-md}
+                flex-wrap: wrap
+        
+        .title
+            color: $clr-main
+            text-align: center
+            text-transform: uppercase
+            font-size: $fs * 1.4
+        &__item
+            display: inline-block
+            color: $clr-main
+            margin: 1%
+            border: solid 1px $clr-main
+            border-radius: 5%
+            padding: $blh
+            text-align: center
+            transition: .5s
+            background-size: 115px auto
+            background-position: center 20px
+            background-repeat: no-repeat
+            &:hover
+                background-color: rgba(2, 51, 118, 0.1) 
+                border-color: rgba(2, 51, 118, 0.3)
+            &--assessments
+                background-image: url("../../assets/images/home/assessments.png")
+            &--restructuring
+                background-image: url("../../assets/images/home/restructuring.png")
+            &--interim
+                background-image: url("../../assets/images/home/interim.png")
+            &--performance
+                background-image: url("../../assets/images/home/performance.png")
+            @media #{$media-max-md}
+                width: 45%
+            @media #{$media-max-sm}
+                width: 90%
+                margin: 3%
+            
+        &__title
+            font-size: $fs * 1.5
+            line-height: normal
+            margin: 140px 0 0
+            font-weight: 100
+
+    a.services__item,
+    a:visited.services__item
+        color: $clr-main
+
+
+
+    .steps
+        +container($container)
+        max-width: 1100px
+        .title
+            color: $clr-main
+            text-align: center
+            font-size: $fs * 1.4
+            margin: $blh*2 auto
+            text-transform: uppercase
+        &__item
+            min-height: 300px
+            padding: 8% 0 0 480px
+            margin: $blh*3 auto
+            position: relative
+            @media #{$media-max-md}
+                padding: 8% 0 0 340px
+            @media #{$media-max-sm}
+                padding: 275px 0 0 40px
+                margin: $blh*2 auto $blh*3
+            &::before
+                display: block
+                position: absolute
+                top: 0
+                left: 0
+                content: ''
+                width: 400px
+                height: 300px
+                @media #{$media-max-md}
+                    width: 290px
+            &--1:before
+                background: url("../../assets/images/home/step1.jpg") top left / 400px auto no-repeat
+                @media #{$media-max-sm}
+                    background-position: center top
+            &--2
+                padding: 8% 480px 0 40px
+                @media #{$media-max-md}
+                    padding: 8% 330px 0 40px
+                @media #{$media-max-sm}
+                    padding: 250px 0 0 40px
+                &:before
+                    right: 0
+                    left: inherit
+                    background: url("../../assets/images/home/step2.jpg") top right / 400px auto no-repeat
+                    @media #{$media-max-sm}
+                        background-position: center top
+            &--3:before
+                background: url("../../assets/images/home/step3.jpg") top left / 400px auto no-repeat
+                @media #{$media-max-sm}
+                    background-position: center top
+        &__num
+            margin: 10% 3% 0 -7%
+            font-weight: 900
+            text-transform: uppercase
+            font-size: $fs - 4
+        &__title
+            font-size: $fs * 2
+            font-weight: 100
+            color: $clr-main
+
+
+    .location
+        background: rgba(2, 51, 118, 0.1) url("../../assets/images/home/usa.svg") 75% center / 700px  no-repeat
+        padding: $blh *2
+        min-height: 400px
+        @media #{$media-max-sm}
+            background-size: 400px
+            background-position: center 30px
+            padding: $blh *7 0 $blh $blh
+        &__img
+            display: block
+            margin: 0 15% -10% auto
+            opacity: 0.6
+            max-width: 700px
+        &__content
+            background: $clr-b
+            color: #fff
+            padding: $blh
+            margin: 5% auto 0 
+            max-width: 550px
+        &__title
+            font-size: $fs * 1.4
+            text-transform: uppercase
+            font-weight: 100
+
+
+    .contact
+        +container($container)
+        background: url("../../assets/images/home/contact.jpg") 40% 30% / 600px no-repeat
+        min-height: 500px
+        padding: ($blh*2) $blh
+        &__content
+            display: block
+            background: $clr-o
+            color: #fff
+            padding: $blh * 2 
+            margin: 15% 15% 2% auto
+            max-width: 550px
+            width: 45%
+            @media #{$media-max-md}
+                margin: 15% 0 2% auto
+            @media #{$media-max-sm}
+                margin: 35% auto 10%
+                width: 90%
+                padding: calc($blh* 1.2) $blh
+ 
+        &__title
+            font-size: $fs * 1.4
+            text-transform: uppercase
+            font-weight: 100

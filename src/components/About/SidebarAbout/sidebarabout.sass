@@ -1,0 +1,35 @@
+@import '../../../App.sass'
+
+////////////////////////////////////////////////////////////////////
+////// sidebarabout
+
+.sidebar
+    width: 20%
+    margin: $blh $blh*2 $blh $blh
+    padding: $blh 0 $blh $blh 
+    background: rgba(3,24,53, .2)
+    @media #{$media-max-sm}
+        width: 100%
+        order: 2
+    &__nav-list-item 
+        list-style: none
+    &__link,
+    &__dropdown-item
+        list-style: none
+    &__dropdown-item
+        margin-top: 1px
+        transition: .5s
+        &:hover
+            background: rgba(255,255,255, .8)
+    &__link
+        text-transform: uppercase
+        background: none
+        font-weight: 900
+        font-size: $fs - 2
+        padding: 0
+        &-sub
+            padding: calc($blh/2) 
+            background: rgba(255,255,255, .4)
+            display: block
+            &.active
+                background: rgba(255,255,255, .8)

@@ -1,18 +1,209 @@
-$clr-y: #f8da8b
 
-.hex 
-    display: block
-    position: relative
-    width: 280px
-    height: 250px
-    background: lighten($clr-y, 10%)
-    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)
-    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)
-    img
-        position: absolute
-        top: 2.5%
-        left: 2.5%
-        width: 95%
-        height: 95%
-        -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)
-        clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)
+@import '../../App.sass'
+
+////////////////////////////////////////////////////////////////////
+////// header
+.sr-only
+    display: none
+.header
+    +container($container)
+    padding: 0
+    &:not(.home &)
+        background: rgba(3,24,53, .9)
+        +bg-tint(rgba(3,24,53,0.8), "../../assets/images/home/slideshow4.jpg")
+        min-height: 84px
+        @media #{$media-max-sm}
+            min-height: 70px
+            padding: calc($blh/2)
+        .logo
+            display: inline-block
+            padding: $blh 0 0 $blh
+            @media #{$media-max-sm}
+                padding: 0 
+                width: 60%
+    &--follow
+        background: rgba(3,24,53, .9)
+        min-height: 70px
+        position: fixed
+        width: 100%
+        top: 0
+        left: 0
+        z-index: 99
+        .logo
+            display: inline-block
+            font-size: 70%
+    &--nofollow
+        .logo
+            opacity: 0
+            display: none
+
+    .logo
+        color: #fff
+        margin: 0
+        padding: $blh
+        text-transform: uppercase
+        letter-spacing: 3px
+        font-family: $ff-main
+        @media #{$media-max-md}
+            padding: calc($blh/2) 0 0
+            text-align: center
+        @media #{$media-max-sm}
+            text-align: left
+            padding: 0
+
+
+    .nav
+        display: inline-block
+        color: #fff
+        float: right
+        @media #{$media-max-md}
+            float: none
+            display: block
+            margin: auto 0 auto auto
+            max-width: 455px
+        a.active
+            background: rgba(3,24,53, .9)
+            text-decoration: none
+            cursor: default
+        &__noscroll
+            overflow: hidden
+        &__mobile
+            transition: opacity 0.3s ease-out, top 0.3s ease-out, transform 0.3s ease-out
+            display: none
+            background: transparent
+            border: solid 2px #fff
+            border-radius: 5px
+            color: #fff
+            padding: 5px 10px
+            margin: 10px $blh
+            height: 45px
+            width: 45px
+            outline: none
+            &:hover, &:focus, &:active
+                outline: none
+            &-icon
+                height: 3px
+                width: 25px
+                background: #fff
+                display: block
+                margin: 5px -2px
+                .nav__mobile--active &
+                    opacity: 0.5
+                    position: absolute
+                    margin: -2px
+                    transform: rotate(-135deg)
+                    &:last-child
+                        opacity: 1
+                        transform: rotate(135deg)
+
+
+        &__list
+            list-style: none
+            margin: 0
+            padding-left: 0
+            &-item
+                color: #fff
+                display: inline-block
+                padding: 0
+                position: relative
+                text-decoration: none
+                font-family:  $ff-main
+                font-size: $fs - 2
+                text-transform: uppercase
+                transition-duration: 0.5s
+                a,
+                a:visited
+                    color: #fff
+                    display: block
+                    position: relative
+                    text-decoration: none
+                    padding: $blh
+                    @media #{$media-max-md}
+                        padding: calc($blh/1.2)
+                a:hover
+                    background: rgba(3,24,53, .9)
+                    color: #fff
+                &:hover
+                    cursor: pointer
+                    background: rgba(3,24,53, .8)
+                &:hover > .nav__dropdown,
+                .nav__dropdown:hover
+                    visibility: visible
+                    opacity: 1
+                    display: block
+
+        &__dropdown
+            background: rgba(3,24,53, 1)
+            visibility: hidden
+            opacity: 0
+            min-width: 250px
+            position: absolute
+            transition: all 0.5s ease
+            left: 0
+            display: none
+            &-item
+                clear: both
+                width: inherit
+                list-style: none
+                a
+                    padding: calc($blh/3) calc($blh/2.2)
+                    &:before
+                        display: none
+                    &:hover
+                        background: darken($clr-b, 3%)
+                        color: #fff
+                &::before
+                    content: ''
+                    width: 95%
+                    height: 1px
+                    display: block
+                    margin: auto
+                    background: rgba(255, 255, 255, 0.1)
+                    @media #{$media-max-sm}
+                        display: none
+                &:first-of-type
+                    padding-top: 0
+                    border: none
+                    &::before
+                        display: none
+                
+
+        @media #{$media-max-md}
+            &__list-item a
+                font-size: $fs - 2
+        @media #{$media-max-sm}
+            float: none
+            width: 100%
+            clear: both
+            display: block
+            &__list
+                display: none
+                &--active
+                    display: block
+                    clear: both
+                &-item
+                    float: none
+                    a
+                        padding: calc($blh/3) $blh
+                        font-size: $fs - 2
+            &__mobile
+                display: block
+                position: absolute
+                top: 0
+                right: 0
+            &__dropdown
+                background: transparent
+                visibility: visible
+                opacity: 1
+                padding: 0 $blh
+                display: block
+                position: relative
+                &-item
+                    display: block
+                    margin: 0
+                    padding: 0
+                    text-align: left
+                    font-size: $fs - 2
+                    a
+                        padding: calc( $blh/2 )
+
